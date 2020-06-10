@@ -19,6 +19,7 @@ grammar Datalog;
 program
     : facts                 #FactProgram
     | facts? rules? query   #QueryProgram
+    | 'delete'              #DeleteProgram
     ;
 
 // Facts that represent ground truth information

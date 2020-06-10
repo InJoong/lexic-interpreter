@@ -32,6 +32,18 @@ public interface DatalogListener extends ParseTreeListener {
 	 */
 	void exitQueryProgram(DatalogParser.QueryProgramContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code DeleteProgram}
+	 * labeled alternative in {@link DatalogParser#program}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeleteProgram(DatalogParser.DeleteProgramContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DeleteProgram}
+	 * labeled alternative in {@link DatalogParser#program}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeleteProgram(DatalogParser.DeleteProgramContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code PredicateFact}
 	 * labeled alternative in {@link DatalogParser#fact}.
 	 * @param ctx the parse tree

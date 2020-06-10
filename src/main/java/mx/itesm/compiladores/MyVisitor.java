@@ -24,6 +24,8 @@ public class MyVisitor extends DatalogBaseVisitor {
         return new ProgramWrapper(facts, rules, query);
     }
 
+    @Override public Node visitDeleteProgram(DatalogParser.DeleteProgramContext ctx) { return new Delete(); }
+
     @Override
     public Node visitPredicateFact(DatalogParser.PredicateFactContext ctx) {
         Predicate predicate = (Predicate) visit(ctx.predicate());

@@ -17,10 +17,10 @@ public class DatalogParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, NOT=9, 
-		COUNT=10, AVG=11, SUM=12, MIN=13, MAX=14, IntegerLiteral=15, FloatingPointLiteral=16, 
-		BOOLEANLITERAL=17, CharacterLiteral=18, StringLiteral=19, Predicate=20, 
-		Identifier=21, WS=22, COMMENT=23, MULTILINE_COMMENT=24;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		NOT=10, COUNT=11, AVG=12, SUM=13, MIN=14, MAX=15, IntegerLiteral=16, FloatingPointLiteral=17, 
+		BOOLEANLITERAL=18, CharacterLiteral=19, StringLiteral=20, Predicate=21, 
+		Identifier=22, WS=23, COMMENT=24, MULTILINE_COMMENT=25;
 	public static final int
 		RULE_program = 0, RULE_fact = 1, RULE_literalList = 2, RULE_facts = 3, 
 		RULE_regla = 4, RULE_rules = 5, RULE_query = 6, RULE_atom = 7, RULE_atoms = 8, 
@@ -37,14 +37,14 @@ public class DatalogParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'('", "')'", "'.'", "','", "':-'", "'?-'", "'<'", "'>'", "'not'", 
-			"'count'", "'avg'", "'sum'", "'min'", "'max'"
+			null, "'delete'", "'('", "')'", "'.'", "','", "':-'", "'?-'", "'<'", 
+			"'>'", "'not'", "'count'", "'avg'", "'sum'", "'min'", "'max'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, "NOT", "COUNT", 
+			null, null, null, null, null, null, null, null, null, null, "NOT", "COUNT", 
 			"AVG", "SUM", "MIN", "MAX", "IntegerLiteral", "FloatingPointLiteral", 
 			"BOOLEANLITERAL", "CharacterLiteral", "StringLiteral", "Predicate", "Identifier", 
 			"WS", "COMMENT", "MULTILINE_COMMENT"
@@ -112,6 +112,22 @@ public class DatalogParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
+	public static class DeleteProgramContext extends ProgramContext {
+		public DeleteProgramContext(ProgramContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterDeleteProgram(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitDeleteProgram(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitDeleteProgram(this);
+			else return visitor.visitChildren(this);
+		}
+	}
 	public static class QueryProgramContext extends ProgramContext {
 		public QueryContext query() {
 			return getRuleContext(QueryContext.class,0);
@@ -162,7 +178,7 @@ public class DatalogParser extends Parser {
 		enterRule(_localctx, 0, RULE_program);
 		int _la;
 		try {
-			setState(40);
+			setState(41);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
@@ -199,6 +215,14 @@ public class DatalogParser extends Parser {
 
 				setState(39);
 				query();
+				}
+				break;
+			case 3:
+				_localctx = new DeleteProgramContext(_localctx);
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(40);
+				match(T__0);
 				}
 				break;
 			}
@@ -255,16 +279,16 @@ public class DatalogParser extends Parser {
 			_localctx = new PredicateFactContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(42);
-			predicate();
 			setState(43);
-			match(T__0);
+			predicate();
 			setState(44);
-			literalList();
-			setState(45);
 			match(T__1);
+			setState(45);
+			literalList();
 			setState(46);
 			match(T__2);
+			setState(47);
+			match(T__3);
 			}
 		}
 		catch (RecognitionException re) {
@@ -320,21 +344,21 @@ public class DatalogParser extends Parser {
 			_localctx = new LiteralLiteralListContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48);
+			setState(49);
 			literal();
-			setState(53);
+			setState(54);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__3) {
+			while (_la==T__4) {
 				{
 				{
-				setState(49);
-				match(T__3);
 				setState(50);
+				match(T__4);
+				setState(51);
 				literal();
 				}
 				}
-				setState(55);
+				setState(56);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -393,7 +417,7 @@ public class DatalogParser extends Parser {
 			_localctx = new FactFactsContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(57); 
+			setState(58); 
 			_errHandler.sync(this);
 			_alt = 1;
 			do {
@@ -401,7 +425,7 @@ public class DatalogParser extends Parser {
 				case 1:
 					{
 					{
-					setState(56);
+					setState(57);
 					fact();
 					}
 					}
@@ -409,7 +433,7 @@ public class DatalogParser extends Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(59); 
+				setState(60); 
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
@@ -467,14 +491,14 @@ public class DatalogParser extends Parser {
 			_localctx = new AtomReglaContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(61);
-			atom();
 			setState(62);
-			match(T__4);
+			atom();
 			setState(63);
-			atoms();
+			match(T__5);
 			setState(64);
-			match(T__2);
+			atoms();
+			setState(65);
+			match(T__3);
 			}
 		}
 		catch (RecognitionException re) {
@@ -530,17 +554,17 @@ public class DatalogParser extends Parser {
 			_localctx = new ReglaRulesContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(67); 
+			setState(68); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(66);
+				setState(67);
 				regla();
 				}
 				}
-				setState(69); 
+				setState(70); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==NOT || _la==Predicate );
@@ -595,9 +619,9 @@ public class DatalogParser extends Parser {
 			_localctx = new AtomQueryContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(71);
-			match(T__5);
 			setState(72);
+			match(T__6);
+			setState(73);
 			atom();
 			}
 		}
@@ -670,30 +694,30 @@ public class DatalogParser extends Parser {
 		AtomContext _localctx = new AtomContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_atom);
 		try {
-			setState(81);
+			setState(82);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case Predicate:
 				_localctx = new PredicateAtomContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(74);
-				predicate();
 				setState(75);
-				match(T__0);
+				predicate();
 				setState(76);
-				variableOrLiterals();
-				setState(77);
 				match(T__1);
+				setState(77);
+				variableOrLiterals();
+				setState(78);
+				match(T__2);
 				}
 				break;
 			case NOT:
 				_localctx = new NotAtomContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(79);
-				match(NOT);
 				setState(80);
+				match(NOT);
+				setState(81);
 				atom();
 				}
 				break;
@@ -754,21 +778,21 @@ public class DatalogParser extends Parser {
 			_localctx = new AtomAtomsContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(83);
+			setState(84);
 			atom();
-			setState(88);
+			setState(89);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__3) {
+			while (_la==T__4) {
 				{
 				{
-				setState(84);
-				match(T__3);
 				setState(85);
+				match(T__4);
+				setState(86);
 				atom();
 				}
 				}
-				setState(90);
+				setState(91);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -858,14 +882,14 @@ public class DatalogParser extends Parser {
 		VariableOrLiteralContext _localctx = new VariableOrLiteralContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_variableOrLiteral);
 		try {
-			setState(94);
+			setState(95);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case Identifier:
 				_localctx = new VariableVariableOrLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(91);
+				setState(92);
 				variable();
 				}
 				break;
@@ -877,7 +901,7 @@ public class DatalogParser extends Parser {
 				_localctx = new LiteralVariableOrLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(92);
+				setState(93);
 				literal();
 				}
 				break;
@@ -889,7 +913,7 @@ public class DatalogParser extends Parser {
 				_localctx = new AVVariableOrLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(93);
+				setState(94);
 				aggregateVariable();
 				}
 				break;
@@ -950,21 +974,21 @@ public class DatalogParser extends Parser {
 			_localctx = new VLVariableOrLiteralsContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(96);
+			setState(97);
 			variableOrLiteral();
-			setState(101);
+			setState(102);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__3) {
+			while (_la==T__4) {
 				{
 				{
-				setState(97);
-				match(T__3);
 				setState(98);
+				match(T__4);
+				setState(99);
 				variableOrLiteral();
 				}
 				}
-				setState(103);
+				setState(104);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1022,14 +1046,14 @@ public class DatalogParser extends Parser {
 			_localctx = new AOAggregateVariableContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(104);
-			aggregateOp();
 			setState(105);
-			match(T__6);
+			aggregateOp();
 			setState(106);
-			variable();
-			setState(107);
 			match(T__7);
+			setState(107);
+			variable();
+			setState(108);
+			match(T__8);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1144,14 +1168,14 @@ public class DatalogParser extends Parser {
 		AggregateOpContext _localctx = new AggregateOpContext(_ctx, getState());
 		enterRule(_localctx, 24, RULE_aggregateOp);
 		try {
-			setState(114);
+			setState(115);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case COUNT:
 				_localctx = new CountAggregateOpContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(109);
+				setState(110);
 				match(COUNT);
 				}
 				break;
@@ -1159,7 +1183,7 @@ public class DatalogParser extends Parser {
 				_localctx = new AvgAggregateOpContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(110);
+				setState(111);
 				match(AVG);
 				}
 				break;
@@ -1167,7 +1191,7 @@ public class DatalogParser extends Parser {
 				_localctx = new SumAggregateOpContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(111);
+				setState(112);
 				match(SUM);
 				}
 				break;
@@ -1175,7 +1199,7 @@ public class DatalogParser extends Parser {
 				_localctx = new MinAggregateOpContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(112);
+				setState(113);
 				match(MIN);
 				}
 				break;
@@ -1183,7 +1207,7 @@ public class DatalogParser extends Parser {
 				_localctx = new MaxAggregateOpContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(113);
+				setState(114);
 				match(MAX);
 				}
 				break;
@@ -1238,7 +1262,7 @@ public class DatalogParser extends Parser {
 			_localctx = new IdentifierVariableContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(116);
+			setState(117);
 			match(Identifier);
 			}
 		}
@@ -1289,7 +1313,7 @@ public class DatalogParser extends Parser {
 			_localctx = new PredicatePredicateContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(118);
+			setState(119);
 			match(Predicate);
 			}
 		}
@@ -1405,14 +1429,14 @@ public class DatalogParser extends Parser {
 		LiteralContext _localctx = new LiteralContext(_ctx, getState());
 		enterRule(_localctx, 30, RULE_literal);
 		try {
-			setState(125);
+			setState(126);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case IntegerLiteral:
 				_localctx = new IntegerLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(120);
+				setState(121);
 				match(IntegerLiteral);
 				}
 				break;
@@ -1420,7 +1444,7 @@ public class DatalogParser extends Parser {
 				_localctx = new FloatLLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(121);
+				setState(122);
 				match(FloatingPointLiteral);
 				}
 				break;
@@ -1428,7 +1452,7 @@ public class DatalogParser extends Parser {
 				_localctx = new BoolLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(122);
+				setState(123);
 				match(BOOLEANLITERAL);
 				}
 				break;
@@ -1436,7 +1460,7 @@ public class DatalogParser extends Parser {
 				_localctx = new CharLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(123);
+				setState(124);
 				match(CharacterLiteral);
 				}
 				break;
@@ -1444,7 +1468,7 @@ public class DatalogParser extends Parser {
 				_localctx = new StringLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(124);
+				setState(125);
 				match(StringLiteral);
 				}
 				break;
@@ -1464,38 +1488,38 @@ public class DatalogParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\32\u0082\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33\u0083\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\3\2\3\2"+
-		"\5\2%\n\2\3\2\5\2(\n\2\3\2\5\2+\n\2\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3"+
-		"\4\7\4\66\n\4\f\4\16\49\13\4\3\5\6\5<\n\5\r\5\16\5=\3\6\3\6\3\6\3\6\3"+
-		"\6\3\7\6\7F\n\7\r\7\16\7G\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\t"+
-		"T\n\t\3\n\3\n\3\n\7\nY\n\n\f\n\16\n\\\13\n\3\13\3\13\3\13\5\13a\n\13\3"+
-		"\f\3\f\3\f\7\ff\n\f\f\f\16\fi\13\f\3\r\3\r\3\r\3\r\3\r\3\16\3\16\3\16"+
-		"\3\16\3\16\5\16u\n\16\3\17\3\17\3\20\3\20\3\21\3\21\3\21\3\21\3\21\5\21"+
-		"\u0080\n\21\3\21\2\2\22\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \2\2\2"+
-		"\u0084\2*\3\2\2\2\4,\3\2\2\2\6\62\3\2\2\2\b;\3\2\2\2\n?\3\2\2\2\fE\3\2"+
-		"\2\2\16I\3\2\2\2\20S\3\2\2\2\22U\3\2\2\2\24`\3\2\2\2\26b\3\2\2\2\30j\3"+
-		"\2\2\2\32t\3\2\2\2\34v\3\2\2\2\36x\3\2\2\2 \177\3\2\2\2\"+\5\b\5\2#%\5"+
-		"\b\5\2$#\3\2\2\2$%\3\2\2\2%\'\3\2\2\2&(\5\f\7\2\'&\3\2\2\2\'(\3\2\2\2"+
-		"()\3\2\2\2)+\5\16\b\2*\"\3\2\2\2*$\3\2\2\2+\3\3\2\2\2,-\5\36\20\2-.\7"+
-		"\3\2\2./\5\6\4\2/\60\7\4\2\2\60\61\7\5\2\2\61\5\3\2\2\2\62\67\5 \21\2"+
-		"\63\64\7\6\2\2\64\66\5 \21\2\65\63\3\2\2\2\669\3\2\2\2\67\65\3\2\2\2\67"+
-		"8\3\2\2\28\7\3\2\2\29\67\3\2\2\2:<\5\4\3\2;:\3\2\2\2<=\3\2\2\2=;\3\2\2"+
-		"\2=>\3\2\2\2>\t\3\2\2\2?@\5\20\t\2@A\7\7\2\2AB\5\22\n\2BC\7\5\2\2C\13"+
-		"\3\2\2\2DF\5\n\6\2ED\3\2\2\2FG\3\2\2\2GE\3\2\2\2GH\3\2\2\2H\r\3\2\2\2"+
-		"IJ\7\b\2\2JK\5\20\t\2K\17\3\2\2\2LM\5\36\20\2MN\7\3\2\2NO\5\26\f\2OP\7"+
-		"\4\2\2PT\3\2\2\2QR\7\13\2\2RT\5\20\t\2SL\3\2\2\2SQ\3\2\2\2T\21\3\2\2\2"+
-		"UZ\5\20\t\2VW\7\6\2\2WY\5\20\t\2XV\3\2\2\2Y\\\3\2\2\2ZX\3\2\2\2Z[\3\2"+
-		"\2\2[\23\3\2\2\2\\Z\3\2\2\2]a\5\34\17\2^a\5 \21\2_a\5\30\r\2`]\3\2\2\2"+
-		"`^\3\2\2\2`_\3\2\2\2a\25\3\2\2\2bg\5\24\13\2cd\7\6\2\2df\5\24\13\2ec\3"+
-		"\2\2\2fi\3\2\2\2ge\3\2\2\2gh\3\2\2\2h\27\3\2\2\2ig\3\2\2\2jk\5\32\16\2"+
-		"kl\7\t\2\2lm\5\34\17\2mn\7\n\2\2n\31\3\2\2\2ou\7\f\2\2pu\7\r\2\2qu\7\16"+
-		"\2\2ru\7\17\2\2su\7\20\2\2to\3\2\2\2tp\3\2\2\2tq\3\2\2\2tr\3\2\2\2ts\3"+
-		"\2\2\2u\33\3\2\2\2vw\7\27\2\2w\35\3\2\2\2xy\7\26\2\2y\37\3\2\2\2z\u0080"+
-		"\7\21\2\2{\u0080\7\22\2\2|\u0080\7\23\2\2}\u0080\7\24\2\2~\u0080\7\25"+
-		"\2\2\177z\3\2\2\2\177{\3\2\2\2\177|\3\2\2\2\177}\3\2\2\2\177~\3\2\2\2"+
-		"\u0080!\3\2\2\2\16$\'*\67=GSZ`gt\177";
+		"\5\2%\n\2\3\2\5\2(\n\2\3\2\3\2\5\2,\n\2\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3"+
+		"\4\3\4\7\4\67\n\4\f\4\16\4:\13\4\3\5\6\5=\n\5\r\5\16\5>\3\6\3\6\3\6\3"+
+		"\6\3\6\3\7\6\7G\n\7\r\7\16\7H\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t"+
+		"\5\tU\n\t\3\n\3\n\3\n\7\nZ\n\n\f\n\16\n]\13\n\3\13\3\13\3\13\5\13b\n\13"+
+		"\3\f\3\f\3\f\7\fg\n\f\f\f\16\fj\13\f\3\r\3\r\3\r\3\r\3\r\3\16\3\16\3\16"+
+		"\3\16\3\16\5\16v\n\16\3\17\3\17\3\20\3\20\3\21\3\21\3\21\3\21\3\21\5\21"+
+		"\u0081\n\21\3\21\2\2\22\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \2\2\2"+
+		"\u0086\2+\3\2\2\2\4-\3\2\2\2\6\63\3\2\2\2\b<\3\2\2\2\n@\3\2\2\2\fF\3\2"+
+		"\2\2\16J\3\2\2\2\20T\3\2\2\2\22V\3\2\2\2\24a\3\2\2\2\26c\3\2\2\2\30k\3"+
+		"\2\2\2\32u\3\2\2\2\34w\3\2\2\2\36y\3\2\2\2 \u0080\3\2\2\2\",\5\b\5\2#"+
+		"%\5\b\5\2$#\3\2\2\2$%\3\2\2\2%\'\3\2\2\2&(\5\f\7\2\'&\3\2\2\2\'(\3\2\2"+
+		"\2()\3\2\2\2),\5\16\b\2*,\7\3\2\2+\"\3\2\2\2+$\3\2\2\2+*\3\2\2\2,\3\3"+
+		"\2\2\2-.\5\36\20\2./\7\4\2\2/\60\5\6\4\2\60\61\7\5\2\2\61\62\7\6\2\2\62"+
+		"\5\3\2\2\2\638\5 \21\2\64\65\7\7\2\2\65\67\5 \21\2\66\64\3\2\2\2\67:\3"+
+		"\2\2\28\66\3\2\2\289\3\2\2\29\7\3\2\2\2:8\3\2\2\2;=\5\4\3\2<;\3\2\2\2"+
+		"=>\3\2\2\2><\3\2\2\2>?\3\2\2\2?\t\3\2\2\2@A\5\20\t\2AB\7\b\2\2BC\5\22"+
+		"\n\2CD\7\6\2\2D\13\3\2\2\2EG\5\n\6\2FE\3\2\2\2GH\3\2\2\2HF\3\2\2\2HI\3"+
+		"\2\2\2I\r\3\2\2\2JK\7\t\2\2KL\5\20\t\2L\17\3\2\2\2MN\5\36\20\2NO\7\4\2"+
+		"\2OP\5\26\f\2PQ\7\5\2\2QU\3\2\2\2RS\7\f\2\2SU\5\20\t\2TM\3\2\2\2TR\3\2"+
+		"\2\2U\21\3\2\2\2V[\5\20\t\2WX\7\7\2\2XZ\5\20\t\2YW\3\2\2\2Z]\3\2\2\2["+
+		"Y\3\2\2\2[\\\3\2\2\2\\\23\3\2\2\2][\3\2\2\2^b\5\34\17\2_b\5 \21\2`b\5"+
+		"\30\r\2a^\3\2\2\2a_\3\2\2\2a`\3\2\2\2b\25\3\2\2\2ch\5\24\13\2de\7\7\2"+
+		"\2eg\5\24\13\2fd\3\2\2\2gj\3\2\2\2hf\3\2\2\2hi\3\2\2\2i\27\3\2\2\2jh\3"+
+		"\2\2\2kl\5\32\16\2lm\7\n\2\2mn\5\34\17\2no\7\13\2\2o\31\3\2\2\2pv\7\r"+
+		"\2\2qv\7\16\2\2rv\7\17\2\2sv\7\20\2\2tv\7\21\2\2up\3\2\2\2uq\3\2\2\2u"+
+		"r\3\2\2\2us\3\2\2\2ut\3\2\2\2v\33\3\2\2\2wx\7\30\2\2x\35\3\2\2\2yz\7\27"+
+		"\2\2z\37\3\2\2\2{\u0081\7\22\2\2|\u0081\7\23\2\2}\u0081\7\24\2\2~\u0081"+
+		"\7\25\2\2\177\u0081\7\26\2\2\u0080{\3\2\2\2\u0080|\3\2\2\2\u0080}\3\2"+
+		"\2\2\u0080~\3\2\2\2\u0080\177\3\2\2\2\u0081!\3\2\2\2\16$\'+8>HT[ahu\u0080";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

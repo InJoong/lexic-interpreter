@@ -40,6 +40,18 @@ public class DatalogBaseListener implements DatalogListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDeleteProgram(DatalogParser.DeleteProgramContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDeleteProgram(DatalogParser.DeleteProgramContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPredicateFact(DatalogParser.PredicateFactContext ctx) { }
 	/**
 	 * {@inheritDoc}

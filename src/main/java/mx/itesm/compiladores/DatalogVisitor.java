@@ -25,6 +25,13 @@ public interface DatalogVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitQueryProgram(DatalogParser.QueryProgramContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code DeleteProgram}
+	 * labeled alternative in {@link DatalogParser#program}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeleteProgram(DatalogParser.DeleteProgramContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code PredicateFact}
 	 * labeled alternative in {@link DatalogParser#fact}.
 	 * @param ctx the parse tree

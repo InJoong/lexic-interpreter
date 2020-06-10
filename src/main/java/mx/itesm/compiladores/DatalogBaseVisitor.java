@@ -31,6 +31,13 @@ public class DatalogBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitDeleteProgram(DatalogParser.DeleteProgramContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitPredicateFact(DatalogParser.PredicateFactContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

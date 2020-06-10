@@ -14,7 +14,6 @@ import java.io.PrintWriter;
 import java.util.*;
 
 public class Main {
-    static PrintWriter out;
     static MongoDatabase db;
     public static void main(String[] args) {
 
@@ -27,7 +26,6 @@ public class Main {
 
         //  antlr
         try {
-            out = new PrintWriter((args.length==0)?"salida.txt": args[0]);
             CharStream input = CharStreams.fromStream(System.in);
             DatalogLexer lexer = new DatalogLexer(input);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
