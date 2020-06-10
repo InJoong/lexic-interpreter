@@ -31,14 +31,17 @@ public class Main {
         //  antlr
         try {
             //CharStream input = CharStreams.fromStream(System.in);
-            CharStream input = CharStreams.fromString("0011");
+            CharStream input = CharStreams.fromStream(System.in);
             DatalogLexer lexer = new DatalogLexer(input);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             DatalogParser parser = new DatalogParser(tokens);
             ParseTree tree = parser.program();
             System.out.println();
             System.out.println(tree.toStringTree(parser));
-            ParseTreeWalker walker = new ParseTreeWalker();
+            MyVisitor eval = new MyVisitor();
+            Node n = (Node) eval.visit(tree);
+            n.gen();
+
         }
         catch(Exception e) {
             System.out.println("Error V");

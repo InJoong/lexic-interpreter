@@ -12,6 +12,8 @@ public class Facts extends Node{
 
     @Override
     public void gen() {
-
+        for(Fact fact : facts){
+            fact.gen();
+        }
     }
 }
