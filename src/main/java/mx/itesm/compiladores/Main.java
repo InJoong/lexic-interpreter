@@ -9,9 +9,13 @@ import com.mongodb.client.MongoIterable;
 import org.bson.Document;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
+
+import java.io.PrintWriter;
 import java.util.*;
 
 public class Main {
+    static PrintWriter out;
+    static MongoDatabase db;
     public static void main(String[] args) {
 
         MongoClientURI uri = new MongoClientURI(
@@ -19,18 +23,11 @@ public class Main {
                 "mongodb+srv://admin:admin@cluster0-xzjed.mongodb.net/familia?retryWrites=true&w=majority");
 
         MongoClient mongoClient = new MongoClient(uri);
-        MongoDatabase db = mongoClient.getDatabase("familia");
-        MongoIterable<String> cols = db.listCollectionNames();
-        for(String s : cols)
-            System.out.println(s);
-        MongoCollection<Document> res = db.getCollection("padre-hijo");
-        FindIterable<Document> findIterable = res.find();
-        for (Document d : findIterable)
-            System.out.println(d);
+        db = mongoClient.getDatabase("familia");
 
         //  antlr
         try {
-            //CharStream input = CharStreams.fromStream(System.in);
+            out = new PrintWriter((args.length==0)?"salida.txt": args[0]);
             CharStream input = CharStreams.fromStream(System.in);
             DatalogLexer lexer = new DatalogLexer(input);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -45,6 +42,7 @@ public class Main {
         }
         catch(Exception e) {
             System.out.println("Error V");
+            e.printStackTrace();
         }
 
     }

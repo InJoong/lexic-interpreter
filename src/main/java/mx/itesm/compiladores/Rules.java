@@ -12,6 +12,8 @@ public class Rules extends Node {
 
     @Override
     public void gen() {
-
+        for(Rule rule : rules){
+            rule.gen();
+        }
     }
 }

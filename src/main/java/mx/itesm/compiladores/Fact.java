@@ -15,8 +15,8 @@ public class Fact extends  Node {
     @Override
     public void gen(){
         //Se general el codigo de mongo
-        db.createCollection(predicate.predicateString);
-        MongoCollection<Document> collection = db.getCollection(predicate.predicateString);
+        //Main.db.createCollection(predicate.predicateString);
+        MongoCollection<Document> collection = Main.db.getCollection(predicate.predicateString);
 
         Document document = new Document();
 
@@ -24,6 +24,8 @@ public class Fact extends  Node {
             document.append(String.valueOf(i), literalList.literalList.get(i).literal);
         }
 
-        collection.insertOne(document);
+        if(collection.find(document).first() == null){
+            collection.insertOne(document);
+        }
     }
 }

@@ -10,9 +10,18 @@ public class MyVisitor extends DatalogBaseVisitor {
 
     @Override
     public Node visitQueryProgram(DatalogParser.QueryProgramContext ctx) {
-        Facts facts = (Facts) visit(ctx.facts());
-        Rules rules = (Rules) visit(ctx.rules());
-        return (Query) visit(ctx.query());
+        Facts facts = null;
+        Rules rules = null;
+
+        if(ctx.facts() != null){
+            facts = (Facts) visit(ctx.facts());
+        }
+        if(ctx.rules() != null){
+            rules = (Rules) visit(ctx.rules());
+        }
+
+        Query query = (Query) visit(ctx.query());
+        return new ProgramWrapper(facts, rules, query);
     }
 
     @Override
@@ -103,7 +112,7 @@ public class MyVisitor extends DatalogBaseVisitor {
     @Override
     public Node visitLiteralVariableOrLiteral(DatalogParser.LiteralVariableOrLiteralContext ctx) {
         Literal literal = (Literal) visit(ctx.literal());
-        return new VariableOrLiteral("variable", literal.literal);
+        return new VariableOrLiteral("literal", literal.literal);
     }
 
     @Override
