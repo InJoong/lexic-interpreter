@@ -8,15 +8,29 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface DatalogListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link DatalogParser#program}.
+	 * Enter a parse tree produced by the {@code FactProgram}
+	 * labeled alternative in {@link DatalogParser#program}.
 	 * @param ctx the parse tree
 	 */
-	void enterProgram(DatalogParser.ProgramContext ctx);
+	void enterFactProgram(DatalogParser.FactProgramContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link DatalogParser#program}.
+	 * Exit a parse tree produced by the {@code FactProgram}
+	 * labeled alternative in {@link DatalogParser#program}.
 	 * @param ctx the parse tree
 	 */
-	void exitProgram(DatalogParser.ProgramContext ctx);
+	void exitFactProgram(DatalogParser.FactProgramContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code QueryProgram}
+	 * labeled alternative in {@link DatalogParser#program}.
+	 * @param ctx the parse tree
+	 */
+	void enterQueryProgram(DatalogParser.QueryProgramContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code QueryProgram}
+	 * labeled alternative in {@link DatalogParser#program}.
+	 * @param ctx the parse tree
+	 */
+	void exitQueryProgram(DatalogParser.QueryProgramContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code PredicateFact}
 	 * labeled alternative in {@link DatalogParser#fact}.
@@ -30,29 +44,29 @@ public interface DatalogListener extends ParseTreeListener {
 	 */
 	void exitPredicateFact(DatalogParser.PredicateFactContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code LietralLiteralList}
+	 * Enter a parse tree produced by the {@code LiteralLiteralList}
 	 * labeled alternative in {@link DatalogParser#literalList}.
 	 * @param ctx the parse tree
 	 */
-	void enterLietralLiteralList(DatalogParser.LietralLiteralListContext ctx);
+	void enterLiteralLiteralList(DatalogParser.LiteralLiteralListContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code LietralLiteralList}
+	 * Exit a parse tree produced by the {@code LiteralLiteralList}
 	 * labeled alternative in {@link DatalogParser#literalList}.
 	 * @param ctx the parse tree
 	 */
-	void exitLietralLiteralList(DatalogParser.LietralLiteralListContext ctx);
+	void exitLiteralLiteralList(DatalogParser.LiteralLiteralListContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code FactFact}
+	 * Enter a parse tree produced by the {@code FactFacts}
 	 * labeled alternative in {@link DatalogParser#facts}.
 	 * @param ctx the parse tree
 	 */
-	void enterFactFact(DatalogParser.FactFactContext ctx);
+	void enterFactFacts(DatalogParser.FactFactsContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code FactFact}
+	 * Exit a parse tree produced by the {@code FactFacts}
 	 * labeled alternative in {@link DatalogParser#facts}.
 	 * @param ctx the parse tree
 	 */
-	void exitFactFact(DatalogParser.FactFactContext ctx);
+	void exitFactFacts(DatalogParser.FactFactsContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code AtomRegla}
 	 * labeled alternative in {@link DatalogParser#regla}.
@@ -66,17 +80,17 @@ public interface DatalogListener extends ParseTreeListener {
 	 */
 	void exitAtomRegla(DatalogParser.AtomReglaContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ReglaRule}
+	 * Enter a parse tree produced by the {@code ReglaRules}
 	 * labeled alternative in {@link DatalogParser#rules}.
 	 * @param ctx the parse tree
 	 */
-	void enterReglaRule(DatalogParser.ReglaRuleContext ctx);
+	void enterReglaRules(DatalogParser.ReglaRulesContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ReglaRule}
+	 * Exit a parse tree produced by the {@code ReglaRules}
 	 * labeled alternative in {@link DatalogParser#rules}.
 	 * @param ctx the parse tree
 	 */
-	void exitReglaRule(DatalogParser.ReglaRuleContext ctx);
+	void exitReglaRules(DatalogParser.ReglaRulesContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code AtomQuery}
 	 * labeled alternative in {@link DatalogParser#query}.

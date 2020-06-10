@@ -102,30 +102,57 @@ public class DatalogParser extends Parser {
 	}
 
 	public static class ProgramContext extends ParserRuleContext {
-		public FactsContext facts() {
-			return getRuleContext(FactsContext.class,0);
-		}
-		public QueryContext query() {
-			return getRuleContext(QueryContext.class,0);
-		}
-		public RulesContext rules() {
-			return getRuleContext(RulesContext.class,0);
-		}
 		public ProgramContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
+	 
+		public ProgramContext() { }
+		public void copyFrom(ProgramContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class QueryProgramContext extends ProgramContext {
+		public QueryContext query() {
+			return getRuleContext(QueryContext.class,0);
+		}
+		public FactsContext facts() {
+			return getRuleContext(FactsContext.class,0);
+		}
+		public RulesContext rules() {
+			return getRuleContext(RulesContext.class,0);
+		}
+		public QueryProgramContext(ProgramContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterProgram(this);
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterQueryProgram(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitProgram(this);
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitQueryProgram(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitProgram(this);
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitQueryProgram(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class FactProgramContext extends ProgramContext {
+		public FactsContext facts() {
+			return getRuleContext(FactsContext.class,0);
+		}
+		public FactProgramContext(ProgramContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterFactProgram(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitFactProgram(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitFactProgram(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -139,6 +166,7 @@ public class DatalogParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
+				_localctx = new FactProgramContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(32);
@@ -146,6 +174,7 @@ public class DatalogParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new QueryProgramContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(34);
@@ -260,25 +289,25 @@ public class DatalogParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class LietralLiteralListContext extends LiteralListContext {
+	public static class LiteralLiteralListContext extends LiteralListContext {
 		public List<LiteralContext> literal() {
 			return getRuleContexts(LiteralContext.class);
 		}
 		public LiteralContext literal(int i) {
 			return getRuleContext(LiteralContext.class,i);
 		}
-		public LietralLiteralListContext(LiteralListContext ctx) { copyFrom(ctx); }
+		public LiteralLiteralListContext(LiteralListContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterLietralLiteralList(this);
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterLiteralLiteralList(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitLietralLiteralList(this);
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitLiteralLiteralList(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitLietralLiteralList(this);
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitLiteralLiteralList(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -288,7 +317,7 @@ public class DatalogParser extends Parser {
 		enterRule(_localctx, 4, RULE_literalList);
 		int _la;
 		try {
-			_localctx = new LietralLiteralListContext(_localctx);
+			_localctx = new LiteralLiteralListContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(48);
@@ -333,25 +362,25 @@ public class DatalogParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class FactFactContext extends FactsContext {
+	public static class FactFactsContext extends FactsContext {
 		public List<FactContext> fact() {
 			return getRuleContexts(FactContext.class);
 		}
 		public FactContext fact(int i) {
 			return getRuleContext(FactContext.class,i);
 		}
-		public FactFactContext(FactsContext ctx) { copyFrom(ctx); }
+		public FactFactsContext(FactsContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterFactFact(this);
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterFactFacts(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitFactFact(this);
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitFactFacts(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitFactFact(this);
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitFactFacts(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -361,7 +390,7 @@ public class DatalogParser extends Parser {
 		enterRule(_localctx, 6, RULE_facts);
 		try {
 			int _alt;
-			_localctx = new FactFactContext(_localctx);
+			_localctx = new FactFactsContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(57); 
@@ -470,25 +499,25 @@ public class DatalogParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class ReglaRuleContext extends RulesContext {
+	public static class ReglaRulesContext extends RulesContext {
 		public List<ReglaContext> regla() {
 			return getRuleContexts(ReglaContext.class);
 		}
 		public ReglaContext regla(int i) {
 			return getRuleContext(ReglaContext.class,i);
 		}
-		public ReglaRuleContext(RulesContext ctx) { copyFrom(ctx); }
+		public ReglaRulesContext(RulesContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterReglaRule(this);
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterReglaRules(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitReglaRule(this);
+			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitReglaRules(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitReglaRule(this);
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitReglaRules(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -498,7 +527,7 @@ public class DatalogParser extends Parser {
 		enterRule(_localctx, 10, RULE_rules);
 		int _la;
 		try {
-			_localctx = new ReglaRuleContext(_localctx);
+			_localctx = new ReglaRulesContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(67); 

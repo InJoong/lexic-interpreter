@@ -17,7 +17,14 @@ public class DatalogBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitProgram(DatalogParser.ProgramContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFactProgram(DatalogParser.FactProgramContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitQueryProgram(DatalogParser.QueryProgramContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -31,14 +38,14 @@ public class DatalogBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLietralLiteralList(DatalogParser.LietralLiteralListContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLiteralLiteralList(DatalogParser.LiteralLiteralListContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFactFact(DatalogParser.FactFactContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFactFacts(DatalogParser.FactFactsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -52,7 +59,7 @@ public class DatalogBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitReglaRule(DatalogParser.ReglaRuleContext ctx) { return visitChildren(ctx); }
+	@Override public T visitReglaRules(DatalogParser.ReglaRulesContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -11,11 +11,19 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface DatalogVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link DatalogParser#program}.
+	 * Visit a parse tree produced by the {@code FactProgram}
+	 * labeled alternative in {@link DatalogParser#program}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitProgram(DatalogParser.ProgramContext ctx);
+	T visitFactProgram(DatalogParser.FactProgramContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code QueryProgram}
+	 * labeled alternative in {@link DatalogParser#program}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitQueryProgram(DatalogParser.QueryProgramContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code PredicateFact}
 	 * labeled alternative in {@link DatalogParser#fact}.
@@ -24,19 +32,19 @@ public interface DatalogVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPredicateFact(DatalogParser.PredicateFactContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code LietralLiteralList}
+	 * Visit a parse tree produced by the {@code LiteralLiteralList}
 	 * labeled alternative in {@link DatalogParser#literalList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLietralLiteralList(DatalogParser.LietralLiteralListContext ctx);
+	T visitLiteralLiteralList(DatalogParser.LiteralLiteralListContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code FactFact}
+	 * Visit a parse tree produced by the {@code FactFacts}
 	 * labeled alternative in {@link DatalogParser#facts}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFactFact(DatalogParser.FactFactContext ctx);
+	T visitFactFacts(DatalogParser.FactFactsContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code AtomRegla}
 	 * labeled alternative in {@link DatalogParser#regla}.
@@ -45,12 +53,12 @@ public interface DatalogVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAtomRegla(DatalogParser.AtomReglaContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code ReglaRule}
+	 * Visit a parse tree produced by the {@code ReglaRules}
 	 * labeled alternative in {@link DatalogParser#rules}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitReglaRule(DatalogParser.ReglaRuleContext ctx);
+	T visitReglaRules(DatalogParser.ReglaRulesContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code AtomQuery}
 	 * labeled alternative in {@link DatalogParser#query}.

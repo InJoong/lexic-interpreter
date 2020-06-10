@@ -17,8 +17,8 @@ grammar Datalog;
 // Top level program to perform two functions.
 // Stores data using facts or performs a query over existing/new facts
 program
-    : facts
-    | facts? rules? query
+    : facts                 #FactProgram
+    | facts? rules? query   #QueryProgram
     ;
 
 // Facts that represent ground truth information
@@ -27,7 +27,7 @@ fact
     ;
 
 literalList
-    : literal ( ',' literal ) * #LietralLiteralList
+    : literal ( ',' literal ) * #LiteralLiteralList
     ;
 
 facts

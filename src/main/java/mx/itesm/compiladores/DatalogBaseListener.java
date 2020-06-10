@@ -16,13 +16,25 @@ public class DatalogBaseListener implements DatalogListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProgram(DatalogParser.ProgramContext ctx) { }
+	@Override public void enterFactProgram(DatalogParser.FactProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProgram(DatalogParser.ProgramContext ctx) { }
+	@Override public void exitFactProgram(DatalogParser.FactProgramContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterQueryProgram(DatalogParser.QueryProgramContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitQueryProgram(DatalogParser.QueryProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -40,25 +52,25 @@ public class DatalogBaseListener implements DatalogListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLietralLiteralList(DatalogParser.LietralLiteralListContext ctx) { }
+	@Override public void enterLiteralLiteralList(DatalogParser.LiteralLiteralListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLietralLiteralList(DatalogParser.LietralLiteralListContext ctx) { }
+	@Override public void exitLiteralLiteralList(DatalogParser.LiteralLiteralListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFactFact(DatalogParser.FactFactContext ctx) { }
+	@Override public void enterFactFacts(DatalogParser.FactFactsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFactFact(DatalogParser.FactFactContext ctx) { }
+	@Override public void exitFactFacts(DatalogParser.FactFactsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -76,13 +88,13 @@ public class DatalogBaseListener implements DatalogListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReglaRule(DatalogParser.ReglaRuleContext ctx) { }
+	@Override public void enterReglaRules(DatalogParser.ReglaRulesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReglaRule(DatalogParser.ReglaRuleContext ctx) { }
+	@Override public void exitReglaRules(DatalogParser.ReglaRulesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
